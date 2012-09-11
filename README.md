@@ -45,6 +45,4 @@ And, of course we have to add this to the base template that all other pages ext
       {% DANGERZONE %}
     {% endif %}
 
-footnotes
----------
 [1]: http://flask.pocoo.org/ "Flask project page"
