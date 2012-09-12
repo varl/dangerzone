@@ -14,7 +14,7 @@ So I entered the zone of danger and built this little bugger.
 
 So far, it's just a [Flask] [1] app, that you hook into your application like so:
 
-    # <<every file, ever>>.py
+    # application.py
     from dangerzone import kennyrogers
   
 Hah, of course it cannot be that easy ("or can it!?", "CAN IT, JOHN."). 
@@ -22,8 +22,8 @@ Hah, of course it cannot be that easy ("or can it!?", "CAN IT, JOHN.").
     # dangerzone.py  
     class kennyrogers:
       def debugger(request):
-        if request.method == "GET" and request.args.get('dz'):
-          dangerzone = "<script type="text/javascript">/* minified js goes here inline */</script>"
+        if request.method == "GET" and request.args.get('dz') == '1':
+          dangerzone = '<script type="text/javascript">/* minified js goes here inline */</script>'
         else:
           dangerzone = ""
         return dangerzone
@@ -44,5 +44,7 @@ And, of course we have to add this to the base template that all other pages ext
     {% if dangerzone %}
       {% DANGERZONE %}
     {% endif %}
+    
+Now access your app with http://localhost/whatever?dz=1 and you too will be in the zone of danger. Now fix some bugs. Do some stuff. Have at it, you.
 
 [1]: http://flask.pocoo.org/ "Flask project page"
